@@ -296,8 +296,9 @@ GameObject:
   - component: {fileID: 677547577}
   - component: {fileID: 677547576}
   - component: {fileID: 677547575}
+  - component: {fileID: 677547580}
   m_Layer: 0
-  m_Name: Idle (1)
+  m_Name: "\u8056\u8A95\u8001\u4EBA"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,12 +417,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677547574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.66, y: 4.66, z: 0}
+  m_LocalPosition: {x: -2.97, y: 0.77, z: 0}
   m_LocalScale: {x: 0.498, y: 0.498, z: 0.498}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &677547580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677547574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ead146f8d8c43f4b93c9b9c870b13a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3.5
+  jump: 300
+  isGround: 0
+  _name: Az
 --- !u!1 &887621597
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +494,7 @@ GameObject:
   - component: {fileID: 1092894813}
   - component: {fileID: 1092894812}
   m_Layer: 0
-  m_Name: middle
+  m_Name: "\u4E2D\u666F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
