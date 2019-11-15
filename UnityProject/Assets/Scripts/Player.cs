@@ -2,6 +2,7 @@
 
 public class Player : MonoBehaviour
 {
+    #region 欄位區域
     // 定義欄位 Field
     //欄位類型 欄位名稱(指定 值)結尾
     [Header("速度"), Range(0f, 100f)]
@@ -12,4 +13,52 @@ public class Player : MonoBehaviour
     public bool isGround = false; //布林值 - true false 
     [Header("角色名稱")]
     public string _name = "Az";  //字串 需要雙引號
+    [Header("2D鋼體")]
+    public Rigidbody2D r2d;
+    public Animator ani;
+    #endregion
+
+
+    //定義方法
+    //語法:
+    //修飾詞 傳回類型 方法名稱(){ }
+    // void 沒有傳回
+
+
+    private void Move()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        r2d.AddForce(new Vector2(speed * h, 0));
+        ani.SetBool("跑步開關", h != 0);
+    }
+    private void Jump()
+    {
+        //如果按下空白鍵 並且 在地板上 等於 勾選
+        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        {
+            //在地板上=取消
+            isGround = false;
+            //剛體.推力(往上)
+            r2d.AddForce(new Vector2(0, jump));
+        }
+    }
+    private void Dead()
+    {
+
+    }
+    //事件:在特定時間點以指定次數執行
+    //更新事件:一秒執行約60次 (60FPS)
+    private void Update()
+    {
+        Move();
+        Jump();
+    }
+    //碰撞事件:2D物件碰撞執行一次
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name=="地板")
+        {
+            isGround = true;
+        }
+    }
 }
