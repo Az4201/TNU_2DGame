@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [Header("2D鋼體")]
     public Rigidbody2D r2d;
     public Animator ani;
+    [Header("音效區域")]
+    public AudioSource aud;
+    public  AudioClip;
     #endregion
 
 
@@ -30,6 +33,9 @@ public class Player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         r2d.AddForce(new Vector2(speed * h, 0));
         ani.SetBool("跑步開關", h != 0);
+
+        if (Input.GetKeyDown(KeyCode.A)||Input.GetKeyDown(KeyCode.LeftArrow)) transform.eulerAngles = new Vector3(0, 180, 0);
+        else if (Input.GetKeyDown(KeyCode.D)||Input.GetKeyDown(KeyCode.RightArrow)) transform.eulerAngles = new Vector3(0, 0, 0);
     }
     private void Jump()
     {
@@ -40,6 +46,7 @@ public class Player : MonoBehaviour
             isGround = false;
             //剛體.推力(往上)
             r2d.AddForce(new Vector2(0, jump));
+            ani.SetTrigger("跳躍觸發");
         }
     }
     private void Dead()
@@ -48,6 +55,7 @@ public class Player : MonoBehaviour
     }
     //事件:在特定時間點以指定次數執行
     //更新事件:一秒執行約60次 (60FPS)
+   
     private void Update()
     {
         Move();
